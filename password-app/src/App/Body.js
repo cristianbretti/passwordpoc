@@ -14,7 +14,9 @@ class Body extends Component {
 		var url = "https://kodprov.herokuapp.com/"
 
 		fetch(url).then(response => {
-			console.log(response.status)
+			if(response.status > 400){
+				throw new Error("Server gave a bad response");
+			}
 			return response.json();
 		}).then(data => {
 			this.setState({
