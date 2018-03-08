@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sites from './Body/Sites';
 import './Body.css';
 
 class Body extends Component {
@@ -26,11 +27,11 @@ class Body extends Component {
 	}
 
 	render() {
-		const passwordsElements = this.state.passwords.map((password) => 
-			<li>{password.site}</li>);
-
     	return (
-      	<ul>{passwordsElements}</ul>
+    		<div>
+    			<Sites passwords={this.state.passwords}/>
+    		</div>
+    		
     );
   }
 }
