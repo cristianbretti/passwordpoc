@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import CryptoJS from 'crypto-js';
 import './Site.css';
 
 class Site extends Component {
@@ -20,6 +21,19 @@ class Site extends Component {
 
   	handleClose = () => {
   		this.setState({open: false});
+  	};
+
+  	decrypt = () => {
+  		let decrypted = CryptoJS.AES.decrypt(
+		  {
+		    ciphertext: CryptoJS.enc.Hex.parse(this.state.password),
+		    salt: CryptoJS.lib.WordArray.create(0)
+		  },
+		  'edge.guide'
+		);
+		this.setState({
+			password: decrypted.toString(CryptoJS.enc.Utf8)
+		});
   	}
 
 	render() {
@@ -27,6 +41,7 @@ class Site extends Component {
 	      <FlatButton
 	        label="Decrypt"
 	        primary={true}
+	        onClick={this.decrypt}
 	      />,
 	      <FlatButton
 	        label="Close"
