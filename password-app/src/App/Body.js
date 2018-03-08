@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SiteList from './Body/SiteList';
+import SearchBox from './Body/SearchBox';
 import './Body.css';
 
 class Body extends Component {
@@ -29,6 +30,7 @@ class Body extends Component {
 	render() {
     	return (
     		<div>
+    			<SearchBox/>
     			<SiteList sites={this.state.sites}/>
     		</div>
     		
