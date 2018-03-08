@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Site from './SiteList/Site';
 import './SiteList.css';
 
 class SiteList extends Component {
@@ -10,9 +11,7 @@ class SiteList extends Component {
 
 	render() {
 		const passwordsElements = this.props.passwords.map((password) => 
-			<tr>
-				<button>{password.site}</button>
-			</tr>
+			<Site siteInfo={password}/>
 			);
 
 		return(
