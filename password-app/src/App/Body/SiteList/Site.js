@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import CryptoJS from 'crypto-js';
 import './Site.css';
+
+const buttonStyle = {
+	width: 150,
+	heigth: 50,
+	margin: 10
+}
 
 class Site extends Component {
 	constructor(props) {
@@ -61,7 +68,11 @@ class Site extends Component {
 		return(
 			<tr>
 				<div>
-					<button onClick={this.handleOpen}>{this.props.siteInfo.site}</button>
+					<RaisedButton
+						onClick={this.handleOpen}
+						style={buttonStyle}>
+						{this.props.siteInfo.site}
+					</RaisedButton>
 					<Dialog
 			          title={this.props.siteInfo.site}
 			          actions={buttons}
