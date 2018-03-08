@@ -7,9 +7,12 @@ class Site extends Component {
 	constructor(props) {
     	super(props);
     	this.state = {
-    		open: false
+    		open: false,
+    		password: props.siteInfo.password,
+    		site: props.siteInfo.site
     	}
   	}
+
 
   	handleOpen = () => {
     	this.setState({open: true});
@@ -34,15 +37,15 @@ class Site extends Component {
 		return(
 			<tr>
 				<div>
-					<button onClick={this.handleOpen}>{this.props.siteInfo.site}</button>
+					<button onClick={this.handleOpen}>{this.state.site}</button>
 					<Dialog
-			          title={this.props.siteInfo.site}
+			          title={this.state.site}
 			          actions={buttons}
 			          modal={false}
 			          open={this.state.open}
 			          onRequestClose={this.handleClose}
 			        >
-			          {this.props.siteInfo.password}
+			          {this.state.password}
 			        </Dialog>
 				</div>
 				
