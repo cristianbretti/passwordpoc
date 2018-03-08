@@ -10,13 +10,15 @@ class SiteList extends Component {
 
 
 	render() {
-		const passwordsElements = this.props.passwords.map((password) => 
-			<Site siteInfo={password}/>
+		const siteElements = this.props.sites.map((site) => 
+			<Site siteInfo={site}/>
 			);
 
 		return(
 			<table className="Table">
-				{passwordsElements}
+				<tbody>
+					{siteElements}
+				</tbody>
 			</table>
 		)
 		

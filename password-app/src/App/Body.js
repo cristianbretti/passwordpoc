@@ -6,7 +6,7 @@ class Body extends Component {
 	constructor(props) {
     	super(props);
     	this.state = {
-    		passwords: []
+    		sites: []
     	};
   	}
 
@@ -21,7 +21,7 @@ class Body extends Component {
 			return response.json();
 		}).then(data => {
 			this.setState({
-				passwords: data
+				sites: data
 			})
 		})
 	}
@@ -29,7 +29,7 @@ class Body extends Component {
 	render() {
     	return (
     		<div>
-    			<SiteList passwords={this.state.passwords}/>
+    			<SiteList sites={this.state.sites}/>
     		</div>
     		
     );
