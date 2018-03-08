@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Sites from './Body/Sites';
+import SiteList from './Body/SiteList';
 import './Body.css';
 
 class Body extends Component {
@@ -29,7 +29,7 @@ class Body extends Component {
 	render() {
     	return (
     		<div>
-    			<Sites passwords={this.state.passwords}/>
+    			<SiteList passwords={this.state.passwords}/>
     		</div>
     		
     );
