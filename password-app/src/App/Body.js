@@ -26,8 +26,11 @@ class Body extends Component {
 	}
 
 	render() {
+		const passwordsElements = this.state.passwords.map((password) => 
+			<li>{password.site}</li>);
+
     	return (
-      	<h3>I'm a body!</h3>
+      	<ul>{passwordsElements}</ul>
     );
   }
 }
