@@ -10,10 +10,15 @@ class Sites extends Component {
 
 	render() {
 		const passwordsElements = this.props.passwords.map((password) => 
-			<li>{password.site}</li>);
-		
+			<tr>
+				<button>{password.site}</button>
+			</tr>
+			);
+
 		return(
-			<ul>{passwordsElements}</ul>
+			<table className="Table">
+				{passwordsElements}
+			</table>
 		)
 		
     }
