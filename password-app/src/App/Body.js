@@ -7,7 +7,8 @@ class Body extends Component {
 	constructor(props) {
     	super(props);
     	this.state = {
-    		sites: []
+    		sites: [],
+    		filteredSites: []
     	};
   	}
 
@@ -22,13 +23,23 @@ class Body extends Component {
 			return response.json();
 		}).then(data => {
 			this.setState({
-				sites: data
+				sites: data,
+				filteredSites: data
 			})
 		})
 	}
 
 	changeSearchText = (text) => {
 		console.log(text);
+		var filtered = [];
+		for(var i in this.state.sites){
+			if(this.state.sites[i].site.indexOf(text.trim()) !== -1){
+				filtered.push(this.state.sites[i]);
+			}
+		}
+		this.setState({
+			filteredSites: filtered
+		});
 
 	}
 
@@ -36,7 +47,7 @@ class Body extends Component {
     	return (
     		<div>
     			<SearchBox onChange={this.changeSearchText}/>
-    			<SiteList sites={this.state.sites}/>
+    			<SiteList sites={this.state.filteredSites}/>
     		</div>
     		
     );

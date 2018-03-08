@@ -9,12 +9,9 @@ class Site extends Component {
     	super(props);
     	this.state = {
     		open: false,
-    		encryptedPassword: props.siteInfo.password,
-    		password: "",
-    		site: props.siteInfo.site
+    		password: ""
     	}
   	}
-
 
   	handleOpen = () => {
     	this.setState({open: true});
@@ -31,7 +28,7 @@ class Site extends Component {
   		
 		let decrypted = CryptoJS.AES.decrypt(
 	 	{
-	    	ciphertext: CryptoJS.enc.Hex.parse(this.state.encryptedPassword),
+	    	ciphertext: CryptoJS.enc.Hex.parse(this.props.siteInfo.password),
 	    	salt: CryptoJS.lib.WordArray.create(0)
 	  	},
 	  	'edge.guide'
@@ -64,9 +61,9 @@ class Site extends Component {
 		return(
 			<tr>
 				<div>
-					<button onClick={this.handleOpen}>{this.state.site}</button>
+					<button onClick={this.handleOpen}>{this.props.siteInfo.site}</button>
 					<Dialog
-			          title={this.state.site}
+			          title={this.props.siteInfo.site}
 			          actions={buttons}
 			          modal={false}
 			          open={this.state.open}
