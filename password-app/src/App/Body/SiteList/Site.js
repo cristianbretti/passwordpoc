@@ -9,7 +9,8 @@ class Site extends Component {
     	super(props);
     	this.state = {
     		open: false,
-    		password: props.siteInfo.password,
+    		encryptedPassword: props.siteInfo.password,
+    		password: "",
     		site: props.siteInfo.site
     	}
   	}
@@ -20,20 +21,25 @@ class Site extends Component {
   	};
 
   	handleClose = () => {
-  		this.setState({open: false});
+  		this.setState({
+  			open: false,
+  			password: ""
+  		});
   	};
 
   	decrypt = () => {
-  		let decrypted = CryptoJS.AES.decrypt(
-		  {
-		    ciphertext: CryptoJS.enc.Hex.parse(this.state.password),
-		    salt: CryptoJS.lib.WordArray.create(0)
-		  },
-		  'edge.guide'
+  		
+		let decrypted = CryptoJS.AES.decrypt(
+	 	{
+	    	ciphertext: CryptoJS.enc.Hex.parse(this.state.encryptedPassword),
+	    	salt: CryptoJS.lib.WordArray.create(0)
+	  	},
+	  	'edge.guide'
 		);
 		this.setState({
-			password: decrypted.toString(CryptoJS.enc.Utf8)
+			password: decrypted.toString(CryptoJS.enc.Utf8),
 		});
+  		
   	}
 
 	render() {
@@ -48,7 +54,13 @@ class Site extends Component {
 	        primary={true}
 	        onClick={this.handleClose}
 	      />
-    ];
+    	];
+
+    	var passwordText = "******";
+    	if(this.state.password !== ""){
+    		passwordText = this.state.password;
+    	}
+
 		return(
 			<tr>
 				<div>
@@ -60,7 +72,7 @@ class Site extends Component {
 			          open={this.state.open}
 			          onRequestClose={this.handleClose}
 			        >
-			          {this.state.password}
+			          {passwordText}
 			        </Dialog>
 				</div>
 				
