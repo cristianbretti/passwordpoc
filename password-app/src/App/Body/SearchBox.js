@@ -4,9 +4,14 @@ import TextField from 'material-ui/TextField';
 
 class SearchBox extends Component {
 	
+	onChange = (event, newValue) => {
+		this.props.onChange(newValue);
+	}
+
+
 	render() {
     	return (
-		<TextField hintText="Sök"/>	
+		<TextField hintText="Sök" onChange={this.onChange}/>	
     );
   }
 }

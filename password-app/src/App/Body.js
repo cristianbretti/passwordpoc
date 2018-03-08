@@ -27,10 +27,15 @@ class Body extends Component {
 		})
 	}
 
+	changeSearchText = (text) => {
+		console.log(text);
+
+	}
+
 	render() {
     	return (
     		<div>
-    			<SearchBox/>
+    			<SearchBox onChange={this.changeSearchText}/>
     			<SiteList sites={this.state.sites}/>
     		</div>
     		
