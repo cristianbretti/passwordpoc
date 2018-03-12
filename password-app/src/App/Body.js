@@ -10,6 +10,7 @@ class Body extends Component {
     		sites: [],
     		filteredSites: []
     	};
+    	this.changeSearchText = this.changeSearchText.bind(this);
   	}
 
 
@@ -29,8 +30,7 @@ class Body extends Component {
 		})
 	}
 
-	changeSearchText = (text) => {
-		console.log(text);
+	changeSearchText(text){
 		var filtered = [];
 		for(var i in this.state.sites){
 			if(this.state.sites[i].site.indexOf(text.trim()) !== -1){

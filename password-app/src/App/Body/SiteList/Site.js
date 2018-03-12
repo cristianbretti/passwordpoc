@@ -18,20 +18,23 @@ class Site extends Component {
     		open: false,
     		password: ""
     	}
+    	this.handleOpen = this.handleOpen.bind(this);
+    	this.handleClose = this.handleClose.bind(this);
+    	this.decrypt = this.decrypt.bind(this);
   	}
 
-  	handleOpen = () => {
+  	handleOpen(){
     	this.setState({open: true});
   	};
 
-  	handleClose = () => {
+  	handleClose(){
   		this.setState({
   			open: false,
   			password: ""
   		});
   	};
 
-  	decrypt = () => {
+  	decrypt(){
   		
 		let decrypted = CryptoJS.AES.decrypt(
 	 	{
@@ -47,7 +50,7 @@ class Site extends Component {
   	}
 
 	render() {
-		const buttons = [
+		const dialogButtons = [
 	      <FlatButton
 	        label="Decrypt"
 	        primary={true}
@@ -55,11 +58,12 @@ class Site extends Component {
 	      />,
 	      <FlatButton
 	        label="Close"
-	        primary={true}
+	        primary={false}
 	        onClick={this.handleClose}
 	      />
     	];
 
+    	//If the password is not decrypted, show asteriks
     	var passwordText = "******";
     	if(this.state.password !== ""){
     		passwordText = this.state.password;
@@ -74,7 +78,7 @@ class Site extends Component {
 				</RaisedButton>
 				<Dialog
 		          title={this.props.siteInfo.site}
-		          actions={buttons}
+		          actions={dialogButtons}
 		          modal={false}
 		          open={this.state.open}
 		          onRequestClose={this.handleClose}
