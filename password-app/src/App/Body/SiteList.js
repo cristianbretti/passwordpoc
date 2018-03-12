@@ -3,15 +3,9 @@ import Site from './SiteList/Site';
 import './SiteList.css';
 
 class SiteList extends Component {
-	constructor(props) {
-    	super(props);
-    	
-  	}
-
-
 	render() {
 		const siteElements = this.props.sites.map((site) => 
-			<Site siteInfo={site}/>
+			<Site siteInfo={site} key={site.site}/>
 			);
 
 		return(

@@ -67,23 +67,20 @@ class Site extends Component {
 
 		return(
 			<tr>
-				<div>
-					<RaisedButton
-						onClick={this.handleOpen}
-						style={buttonStyle}>
-						{this.props.siteInfo.site}
-					</RaisedButton>
-					<Dialog
-			          title={this.props.siteInfo.site}
-			          actions={buttons}
-			          modal={false}
-			          open={this.state.open}
-			          onRequestClose={this.handleClose}
-			        >
-			          {passwordText}
-			        </Dialog>
-				</div>
-				
+				<RaisedButton
+					onClick={this.handleOpen}
+					style={buttonStyle}>
+					{this.props.siteInfo.site}
+				</RaisedButton>
+				<Dialog
+		          title={this.props.siteInfo.site}
+		          actions={buttons}
+		          modal={false}
+		          open={this.state.open}
+		          onRequestClose={this.handleClose}
+		        >
+		          {passwordText}
+		        </Dialog>
 			</tr>
 		)
     }
